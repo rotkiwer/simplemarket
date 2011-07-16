@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : logback.xml
+    Author     : rotkiwer
+    Description : Logback configuration file.
+-->
+<configuration>
+  <appender name="standard" class="ch.qos.logback.core.FileAppender">
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <layout class="ch.qos.logback.classic.html.HTMLLayout">
+        <pattern>%level%date%logger%msg%thread%mdc</pattern>
+      </layout>
+    </encoder>
+    <file>output/log.htm</file>
+    <append>false</append>
+  </appender>
+
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date:   %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="global">
+    <appender-ref ref="console" />
+  </logger>
+
+  <root level="TRACE">
+    <appender-ref ref="standard" />
+  </root>
+</configuration>
